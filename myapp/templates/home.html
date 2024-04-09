@@ -1,0 +1,21 @@
+<html>
+<body>
+<input type="color" id="colorPicker" value="{{ color }}">
+<button class="colorButton" value="#ff0000">Red</button>
+<button class="colorButton" value="#00ff00">Green</button>
+<button class="colorButton" value="#0000ff">Blue</button>
+
+<br>
+<input type="radio" id="highlightParents" name="highlightOption" value="parents" checked>
+<label for="highlightParents">Highlight Parents</label><br>
+<input type="radio" id="highlightDescendants" name="highlightOption" value="descendants">
+<label for="highlightDescendants">Highlight Descendants</label>
+<br>
+<input type="radio" id="highlightBoth" name="highlightOption" value="both">
+<label for="highlightBoth">Highlight Both</label>
+<pre id="content">
+{{ tree }}
+</pre>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
