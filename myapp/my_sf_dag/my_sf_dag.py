@@ -102,7 +102,11 @@ if __name__ == '__main__':
     roots,desc=find_roots(tree)
 
     s=print_tree_from_root(roots[0], tree)
-    
-    llefs,ancestors_count=find_leafs(tree)
-    s=print_tree_from_leaf(llefs[0], tree)
     print(s)
+    
+    leafs,ancestors_count=find_leafs(tree)
+    
+    for l in leafs:
+        print(l)
+        s=print_tree_from_leaf(l, tree)
+        print(s)
