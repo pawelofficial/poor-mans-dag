@@ -1,4 +1,5 @@
-this simple flask app allows you to print dag in ascii format via flask 
+this simple flask app allows you to print dag in ascii format via flask ( click raw to see the tree properly on gh )
+
 
 *database1__schema1__table0*
 └──>*database1__schema1__table1* ( DEPENDENCY )
