@@ -23,3 +23,11 @@ database1__schema1__table6
 └<──*database1__schema1__table3* ( DEPENDENCY )
     └<──*database1__schema1__table1* ( DEPENDENCY )
         └<──*database1__schema1__table0* ( DEPENDENCY )
+
+
+current state:
+![image](https://github.com/pawelofficial/my-sf-dag/assets/47770546/7ddac76d-5d8c-4a04-b36a-e94a3f5b13d1)
+
+
+in progress:
+    - add wording -> let user add a string to a lineage when they click on something ( coloring but with words ) 
