@@ -8,9 +8,9 @@ connection_parameters=json.load(open('./sf_connection_config.json'))
 
 
 # read object_dependencies from snowflake 
-def read_sf(table_name='object_dependencies',ref_col='EDGE_TYPE',fp=''):
+def read_sf(table_name='object_dependencies',ref_col='REF',fp=''):
     session = Session.builder.configs(connection_parameters).create()
-    df=session.sql(f"select * from {table_name}").to_pandas()
+    df=session.sql(f"select *, 'foo' as REF from {table_name}").to_pandas()
     df['SRC']=df['REFERENCED_DATABASE']+'__'+df['REFERENCED_SCHEMA']+'__'+df['REFERENCED_OBJECT_NAME']
     df['TGT']=df['REFERENCING_DATABASE']+'__'+df['REFERENCING_SCHEMA']+'__'+df['REFERENCING_OBJECT_NAME']
     df['REF']='' if ref_col is None else df[ref_col]
