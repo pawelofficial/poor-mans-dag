@@ -1,6 +1,17 @@
 from flask import Flask, render_template, request, jsonify
 from markupsafe import Markup
 from my_sf_dag.my_sf_dag import *
+import logging 
+
+
+# setup logger 
+logging.basicConfig(filename='app.log', filemode='w', level=logging.INFO)
+logger = logging.getLogger(__name__)
+# log hello 
+logger.info('Hello')
+
+
+
 
 DOWNLOAD_DATA_FROM_SF=True
 if DOWNLOAD_DATA_FROM_SF:
@@ -23,18 +34,26 @@ def clean_clicked_line(s,sep='*'):
             l.append(line.split(sep)[1])
     return l
 
+def add_keyword_to_tree(keyword, tree):
+    for node in tree:
+        if keyword in node['name']:
+            node['name'] = node['name'].replace(keyword, f'<span style="background-color: #ff0000">{keyword}</span>')
+    return tree
 
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
+@app.route('/', methods=['GET', 'POST'])
+def home(s = None ):
+    if s is not None:
+        print(s)
+    
     roots, desc = find_roots(tree)
     s = print_tree_from_root(roots[0], tree)
     s = wrap_lines_in_span(s)
     default_color = "#ff0000"  # Set your default color here
-    
     return render_template('home.html', tree=Markup(s), color=default_color)
+
 @app.route('/process_click', methods=['POST'])
 def process_click():
     data = request.get_json()
@@ -47,14 +66,17 @@ def process_click():
     clicked_descendants=clean_clicked_line(print_tree_from_root(clicked_node, tree))
 
     clicked_lineage=clicked_parents+clicked_descendants
-    # process the clicked_string as needed
+
     return jsonify({'result': 'success', 'clicked_parents': clicked_parents
                     , 'clicked_descendants': clicked_descendants
                     ,'clicked_both':clicked_lineage
                     })
 
 
-    
+
+
+
+
 
 
 if __name__ == '__main__':

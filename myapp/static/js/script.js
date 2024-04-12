@@ -37,6 +37,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     document.querySelectorAll('span').forEach((span) => {
                         if (span.innerText.includes(element)) {
                             span.style.color = selectedColor;
+                            const keyword = document.getElementById('keyword').value;
+                            if (!span.innerText.includes("(" + keyword + ")")) {
+                                span.innerText = span.innerText + " (" + keyword + ")"; // Add keyword to the text
+                            }
+
+                            //span.innerText = span.innerText + " (" + keyword + ")" ; // Add "changed" to the text
                         }
                     });
                 });
