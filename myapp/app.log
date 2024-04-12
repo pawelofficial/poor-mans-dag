@@ -1,0 +1,3 @@
+INFO:__main__:Hello
+INFO:snowflake.connector.connection:Snowflake Connector for Python Version: 3.0.2, Python Version: 3.8.0, Platform: Windows-10-10.0.19041-SP0
+INFO:snowflake.connector.connection:This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
