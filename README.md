@@ -1,5 +1,7 @@
 this simple flask app allows you to print dag in ascii format via flask ( click raw to see the tree properly on gh )
 
+poor man's dag is based on snowflake objects dependency table, it prints parent-child relationship between tables, when you click a node it colors it's tree, when you click it with keyword specified it adds the keyword next to the node.
+
 
 *database1__schema1__table0*
 └──>*database1__schema1__table1* ( DEPENDENCY )
